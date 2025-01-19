@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.verificationanim{
+    position: absolute;
+    animation: lanimation 5s;
+}
+@keyframes lanimation {
+    0%{right: -220px;}
+    50%{right: 30px;}
+    100%{right: -220px;}
+}
