@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTasks } from '../hooks/TaskContext'
 import { useProfile } from '../hooks/ProfileContext'
+import getGreeting from '../logic/getGreeting'
 
 function Meteo() {
     const {date} = useTasks()
@@ -10,6 +11,7 @@ function Meteo() {
     const {profile} = useProfile()
     const username = profile.username
     const usernameFinal = username.split(' ')[0]
+    const greeting = getGreeting(getHour())
 
   return (
     <>
@@ -20,7 +22,7 @@ function Meteo() {
             </div>
             <div className=' w-32 h-32 bg-gray-400'></div>
         </div>
-        <p className=' text-center my-5'> {usernameFinal}, How are you today? </p>
+        <p className=' text-center my-5'>{greeting} {usernameFinal}, How are you today? </p>
     </>
   )
 }
