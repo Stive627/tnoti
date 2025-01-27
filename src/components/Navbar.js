@@ -7,7 +7,7 @@ import color from '../color';
 import Overlayer from './Overlayer';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-function Navbar({Nnotification}) {
+function Navbar({Nnotification = 0}) {
   const colorApp = color()
   const [show, setShow] = useState(false)
   return (

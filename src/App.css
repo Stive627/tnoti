@@ -11,3 +11,9 @@
     50%{right: 30px;}
     100%{right: -220px;}
 }
+.ProfileButton{
+
+}
+.ProfileButton:hover{
+    background-color: 'rgba(61, 93, 242, 1)';
+}
