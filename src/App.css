@@ -17,3 +17,34 @@
 .ProfileButton:hover{
     background-color: 'rgba(61, 93, 242, 1)';
 }
+
+.nextbutton{
+    font-size: 16px;
+    color: white;
+    background-color: rgba(61, 93, 242, 1);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+
+}
+.backbutton{
+    border: 1px solid rgba(61, 93, 242, 1);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    color: rgba(61, 93, 242, 1);
+    font-size: 16px;
+}
+.tooltip {
+
+    position: relative; 
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 45px 45px 45px 45px;
+    border-color: red red #007bff red;/* Required to position the pseudo-element correctly */ 
+    transform: rotate(-90deg);
+    
+  }
