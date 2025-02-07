@@ -11,7 +11,7 @@ function Navbar({Nnotification = 0}) {
   const colorApp = color()
   const [show, setShow] = useState(false)
   return (
-    <div className=' col-span-6'>
+    <div className=''>
         <div className=' w-full py-3 px-2 flex flex-row-reverse gap-3'>
             <div className = ' flex flex-row gap-1 items-center'>
                <Avatar/>

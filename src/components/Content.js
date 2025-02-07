@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
-import HomeContent from '../hooks/HomeContent'
+import HomeContent from './HomeContent'
 
 function Content() {
   return (

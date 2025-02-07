@@ -7,14 +7,15 @@ import { useTasks } from '../hooks/TaskContext'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import InfoIcon from '@mui/icons-material/Info';
 import Forecast from './Forecast'
+import { getHTML5DateTimeStringsFromDate } from '../logic/getHTML5DateTimeStringsFromDate'
 
-function AddTask({handleClose}) {
+function AddTask({handleClose, initialDate = getHTML5DateTimeStringsFromDate(new Date())[0]}) {
     const [title, setTitle] = useState('')
-    const [date, setDate] = useState('')
     const [startTime, setStartTime] = useState({hour:'00', minute:'00'})
     const [endTime, setEndTime] = useState({hour:'00', minute:'00'})
     const [showTitle, setShowTitle] = useState(false)
     const [showWeather, setShowWeather] = useState(false)
+    const [date, setDate] = useState(initialDate)
     const common = ['Breakfast', 'Visit', 'Study', 'Gym']
     const [s, sS] = useState({sh:false, sm:false, eh:false, em:false})
     const disabled = !title || !date || !startTime.hour || !startTime.minute || !endTime.hour || !endTime.minute

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import getTime from "../logic/getTime";
 
 export default function usePercentage(time){
     const seconds = time.hour * 3600 + time.minute * 60 

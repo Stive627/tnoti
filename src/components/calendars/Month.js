@@ -1,45 +1,23 @@
 import React from 'react'
+import { useTasks } from '../../hooks/TaskContext'
+import color from '../../color'
 
-function Month({month, r1, r2, r3, r4, r5, r6=undefined, handleClick}) {
+function Month({month, cm, handleClick, currentMonth, currentYear}) {
+    const {takenDates} = useTasks()
     const title = ['S','M','T','W','T','F','S']
-    const yearMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const darkcolor = 'rgba(67, 67, 67, 1)'
     const date = new Date()
     const day = date.getDate()
-    const charMonth =  new Intl.DateTimeFormat('fr-FR', {month:'2-digit'}).format(new Date())
-    const currentMonth = (m) => parseInt(charMonth) === yearMonths.indexOf(m) + 1
     const currentday = (value) => Number(value) === day
-    const dt = charMonth+'/'+String(day)+'/2025'
-    const DayUI = ({d, m}) => <button onClick={() => handleClick(dt)} className={`${currentday(d) && currentMonth(m) && ' text-white bg-black border-black'} ${currentday(d) && !currentMonth(m) &&'bg-gray-300'}  border rounded-full cursor-pointer ${d && 'p-2'}`}>{d}</button>
-    console.log(currentMonth('03'))
+    const dt = (day) => String(currentYear) + '-' + String(currentMonth).padStart(2, '0') + '-' + String(day) 
+    const Square = ({d}) => <div className='  flex justify-center items-center'><div><button onClick={()=> handleClick(dt(d))} style={{color:(currentday(d) && cm )?'white':'black', backgroundColor:(currentday(d) && cm )?'rgba(22, 124, 255, 1)': takenDates.includes(dt(d)) ? color().orange: 'white'}} className={`${currentday(d) && !cm &&' border'} rounded-full  w-8 h-8  m-2  flex items-center justify-center`}><p>{d}</p></button></div></div>
   return (
-    <table className=' w-full border' style={{borderColor:'rgba(204, 204, 204, 1)'}}>
-        <tbody>
-
-        <tr>
-            {title.map((elt, indx) => <th key={indx}>{elt}</th>)}
-        </tr>
-        <tr>
-            {r1.map((elt, indx) => <td key={indx}><DayUI d={elt} m={month}/></td>)}
-        </tr>
-        <tr>
-            {r2.map((elt, indx) => <td key={indx}><DayUI d={elt} m={month}/></td>)}
-        </tr>
-        <tr>
-            {r3.map((elt, indx) => <td key={indx}><DayUI d={elt} m={month}/></td>)}
-        </tr>
-        <tr>
-            {r4.map((elt, indx) => <td key={indx}><DayUI d={elt} m={month}/></td>)}
-        </tr>
-        <tr>
-            {r5.map((elt, indx) => <td key={indx}><DayUI d={elt} m={month}/></td>)}
-        </tr>
-        {
-        r6 &&   <tr>
-                    {r6.map((elt, indx) => <td key={indx}><DayUI d={elt} m={month}/></td>)}
-                </tr>
-        }
-        </tbody>
-    </table>
+    <>   
+      <div className = 'flex justify-between'>{title.map((elt, indx) => <p className='  text-[15px] w-full text-center' style={{color:darkcolor}} key={indx}>{elt}</p>)}</div> 
+      <div className = 'border border-gray-200 grid grid-cols-7 divide-y divide-x   divide-gray-200'>
+          {month.map((elt, indx) => <Square key={indx} d={elt}/>)}
+      </div>
+    </>
   )
 }
 
